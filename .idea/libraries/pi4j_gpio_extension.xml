@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="pi4j-gpio-extension">
+    <CLASSES>
+      <root url="jar://C:/Program Files/Java/jdk1.8.0_181/lib/pi4j-gpio-extension.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

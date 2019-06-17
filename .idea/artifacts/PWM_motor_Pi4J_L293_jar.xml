@@ -1,0 +1,10 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="PWM_motor_Pi4J_L293:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/PWM_motor_Pi4J_L293_jar</output-path>
+    <root id="archive" name="PWM_motor_Pi4J_L293.jar">
+      <element id="module-output" name="PWM_motor_Pi4J_L293" />
+      <element id="extracted-dir" path="C:/Program Files/Java/jdk1.8.0_181/lib/pi4j-gpio-extension.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="C:/Program Files/Java/jdk1.8.0_181/lib/pi4j-core-1.1.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>
