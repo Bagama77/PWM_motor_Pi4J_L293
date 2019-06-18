@@ -40,7 +40,7 @@ public class ControlMotorsDirectionAndSpeed {
         SoftPwm.softPwmWrite(MOTOR_1_PIN_A, 0);
         SoftPwm.softPwmWrite(MOTOR_1_PIN_B, 50);
         // wait 3 seconds
-        Thread.sleep(3000);
+        Thread.sleep(10000);
         // disable motor 1
         SoftPwm.softPwmWrite(MOTOR_1_PIN_B, 0);
 //        motor1pinE.low();
