@@ -8,7 +8,7 @@ import com.pi4j.wiringpi.SoftPwm;
  * @author https://javatutorial.net
  */
 public class ControlMotorsDirectionAndSpeed {
-    private static int MOTOR_1_PIN_A = 4;
+    private static int MOTOR_1_PIN_A = 1;
     private static int MOTOR_1_PIN_B = 5;
 
     public static void main(String[] args) throws InterruptedException {
@@ -27,7 +27,7 @@ public class ControlMotorsDirectionAndSpeed {
 //        motor1pinE.high();
         SoftPwm.softPwmWrite(MOTOR_1_PIN_A, 15);
         // wait 2 seconds
-        Thread.sleep(20000);
+        Thread.sleep(5000);
         System.out.println("rotate motor 1 clockwise at 60% speed for 2 seconds");
 //        SoftPwm.softPwmWrite(MOTOR_1_PIN_A, 60);
         // wait 2 seconds
@@ -38,9 +38,9 @@ public class ControlMotorsDirectionAndSpeed {
 //        Thread.sleep(2000);
 //        System.out.println("rotate motor 1 in opposite direction at 50% speed for 3 seconds");
         SoftPwm.softPwmWrite(MOTOR_1_PIN_A, 0);
-//        SoftPwm.softPwmWrite(MOTOR_1_PIN_B, 50);
+        SoftPwm.softPwmWrite(MOTOR_1_PIN_B, 50);
         // wait 3 seconds
-//        Thread.sleep(10000);
+        Thread.sleep(10000);
         // disable motor 1
         SoftPwm.softPwmWrite(MOTOR_1_PIN_B, 0);
 //        motor1pinE.low();
