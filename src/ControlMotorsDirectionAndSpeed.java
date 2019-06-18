@@ -1,13 +1,15 @@
 import com.pi4j.io.gpio.GpioController;
 import com.pi4j.io.gpio.GpioFactory;
+import com.pi4j.io.gpio.GpioPinDigitalOutput;
+import com.pi4j.io.gpio.RaspiPin;
 import com.pi4j.wiringpi.SoftPwm;
 /**
  * Controls motor speed and direction of two DC motors
  * @author https://javatutorial.net
  */
 public class ControlMotorsDirectionAndSpeed {
-    private static int MOTOR_1_PIN_A = 18;
-    private static int MOTOR_1_PIN_B = 23;
+    private static int MOTOR_1_PIN_A = 4;
+    private static int MOTOR_1_PIN_B = 5;
 
     public static void main(String[] args) throws InterruptedException {
         // get a handle to the GPIO controller
