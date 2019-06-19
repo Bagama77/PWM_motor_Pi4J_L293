@@ -10,7 +10,6 @@ import com.pi4j.wiringpi.SoftPwm;
 public class ControlMotorsDirectionAndSpeed {
     private static int MOTOR_1_PIN_A = 1;
     private static int MOTOR_1_PIN_B = 5;
-
     private final GpioController gpio = GpioFactory.getInstance();
 
     public ControlMotorsDirectionAndSpeed() {
@@ -22,7 +21,7 @@ public class ControlMotorsDirectionAndSpeed {
 
         //move forward
         if(pinA) {
-            SoftPwm.softPwmWrite(MOTOR_1_PIN_B, speed);
+            SoftPwm.softPwmWrite(MOTOR_1_PIN_B, 0);
             SoftPwm.softPwmWrite(MOTOR_1_PIN_A, speed);
             System.out.println("direction: forward, speed: " + speed);
         }
@@ -72,7 +71,7 @@ public class ControlMotorsDirectionAndSpeed {
         gpio.shutdown();
 */
         ControlMotorsDirectionAndSpeed controlMotorsDirectionAndSpeed = new ControlMotorsDirectionAndSpeed();
-        controlMotorsDirectionAndSpeed.motorDirectionAndSpeed(true, false, 30);
+        controlMotorsDirectionAndSpeed.motorDirectionAndSpeed(true, false, 50);
         Thread.sleep(5000);
 
         controlMotorsDirectionAndSpeed.motorDirectionAndSpeed(false, true, 50);
