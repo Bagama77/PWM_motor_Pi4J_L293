@@ -11,7 +11,38 @@ public class ControlMotorsDirectionAndSpeed {
     private static int MOTOR_1_PIN_A = 1;
     private static int MOTOR_1_PIN_B = 5;
 
+    private final GpioController gpio = GpioFactory.getInstance();
+
+    public ControlMotorsDirectionAndSpeed() {
+        SoftPwm.softPwmCreate(MOTOR_1_PIN_A, 0, 100);
+        SoftPwm.softPwmCreate(MOTOR_1_PIN_B, 0, 100);
+    }
+
+    public void motorDirectionAndSpeed(boolean pinA, boolean pinB, int speed) {
+
+        //move forward
+        if(pinA) {
+            SoftPwm.softPwmWrite(MOTOR_1_PIN_B, speed);
+            SoftPwm.softPwmWrite(MOTOR_1_PIN_A, speed);
+            System.out.println("direction: forward, speed: " + speed);
+        }
+        //move backward
+        if(pinB) {
+            SoftPwm.softPwmWrite(MOTOR_1_PIN_A, 0);
+            SoftPwm.softPwmWrite(MOTOR_1_PIN_B, speed);
+            System.out.println("direction: backward, speed: " + speed);
+        }
+        //stop motors
+        if (!pinA && !pinB) {
+            SoftPwm.softPwmWrite(MOTOR_1_PIN_B, 0);
+            SoftPwm.softPwmWrite(MOTOR_1_PIN_A, 0);
+            System.out.println("stop motors");
+        }
+
+    }
+
     public static void main(String[] args) throws InterruptedException {
+/*
         // get a handle to the GPIO controller
         final GpioController gpio = GpioFactory.getInstance();
         // init soft PWM pins
@@ -23,20 +54,13 @@ public class ControlMotorsDirectionAndSpeed {
         // init GPIO pins
 //        final GpioPinDigitalOutput motor1pinE = gpio.provisionDigitalOutputPin(RaspiPin.GPIO_18, "m1E");
 //        final GpioPinDigitalOutput motor2pinE = gpio.provisionDigitalOutputPin(RaspiPin.GPIO_23, "m2E");
-        System.out.println("rotate motor 1 clockwise at 15% speed for 20 seconds");
+        System.out.println("rotate motor 1 clockwise at 15% speed for 5 seconds");
 //        motor1pinE.high();
         SoftPwm.softPwmWrite(MOTOR_1_PIN_A, 15);
         // wait 2 seconds
         Thread.sleep(5000);
-        System.out.println("rotate motor 1 clockwise at 60% speed for 2 seconds");
-//        SoftPwm.softPwmWrite(MOTOR_1_PIN_A, 60);
-        // wait 2 seconds
-//        Thread.sleep(2000);
-//        System.out.println("rotate motor 1 clockwise at full speed for 2 seconds");
-//        SoftPwm.softPwmWrite(MOTOR_1_PIN_A, 100);
-        // wait 2 seconds
-//        Thread.sleep(2000);
-//        System.out.println("rotate motor 1 in opposite direction at 50% speed for 3 seconds");
+
+        System.out.println("rotate motor 1 in opposite direction at 50% speed for 10 seconds");
         SoftPwm.softPwmWrite(MOTOR_1_PIN_A, 0);
         SoftPwm.softPwmWrite(MOTOR_1_PIN_B, 50);
         // wait 3 seconds
@@ -46,5 +70,15 @@ public class ControlMotorsDirectionAndSpeed {
 //        motor1pinE.low();
 
         gpio.shutdown();
+*/
+        ControlMotorsDirectionAndSpeed controlMotorsDirectionAndSpeed = new ControlMotorsDirectionAndSpeed();
+        controlMotorsDirectionAndSpeed.motorDirectionAndSpeed(true, false, 30);
+        Thread.sleep(5000);
+
+        controlMotorsDirectionAndSpeed.motorDirectionAndSpeed(false, true, 50);
+        Thread.sleep(5000);
+
+        controlMotorsDirectionAndSpeed.motorDirectionAndSpeed(false, false, 0);
+
     }
 }
